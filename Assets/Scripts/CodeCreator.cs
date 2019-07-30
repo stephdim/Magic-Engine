@@ -12,7 +12,7 @@ using UnityEngine;
 /// This code example creates a graph using a CodeCompileUnit and  
 /// generates source code for the graph using the CSharpCodeProvider.
 /// </summary>
-public class CodeCreator : MonoBehaviour{
+public class CodeCreator : MonoBehaviour {
         
     /// <summary>
     /// Define the compile unit to use for code generation. 
@@ -29,6 +29,7 @@ public class CodeCreator : MonoBehaviour{
     /// The name of the file to contain the source code.
     /// </summary>
     private const string outputFileName = "Assets/Resources/TestClass.cs";
+    private const string assembliesRepository = "C:/Program Files/Unity/Hub/Editor/2019.1.12f1/Editor/Data/Managed/UnityEngine/";
 
     /// <summary>
     /// Define the class.
@@ -316,7 +317,7 @@ public class CodeCreator : MonoBehaviour{
 
         // Add an assembly reference.
         cp.ReferencedAssemblies.Add("System.dll");
-        cp.ReferencedAssemblies.Add("D:/Documents/Projets/Magic-Engine/Library/UnityAssemblies/UnityEngine.dll");
+        cp.ReferencedAssemblies.Add(assembliesRepository + "UnityEngine.CoreModule.dll");
 
         // Generate an executable instead of
         // a class library.
@@ -336,7 +337,7 @@ public class CodeCreator : MonoBehaviour{
             Console.WriteLine("Errors building {0} into {1}",
                 sourceFile, cr.PathToAssembly);
             foreach (CompilerError ce in cr.Errors) {
-                Debug.Log(ce.ToString());
+                Debug.LogError(ce.ToString());
                 Console.WriteLine();
             }
         } else {

@@ -2,7 +2,8 @@
 
 This project is on conception phase
 
-#Purpose
+Purpose :
+
 Magic-Engine is an engine based on Unity which is used to build VR application.
 It will generate code at runtime that you can use to build your own application.
 
